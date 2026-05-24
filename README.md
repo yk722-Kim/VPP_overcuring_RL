@@ -218,8 +218,8 @@ Typical final output fields include:
 g_history
 t_history
 final_gel_void_depth_um
-final_solid_void_depth_um
-final_gel_only_void_depth_um
+final_overcure_void_depth_um
+final_gel_only_band_depth_um
 total_exposure_time_s
 ```
 
@@ -228,7 +228,7 @@ For staircase-type and slant-type geometries, per-overhang results may also be r
 ```text
 per_overhang_z_gel_um
 per_overhang_z_overcure_um
-per_overhang_z_gel_only_um
+per_overhang_z_gel_only_band_um
 total_z_gel_um
 total_z_overcure_um
 total_objective_um
@@ -237,7 +237,7 @@ total_objective_um
 The key quantity corresponding to experimentally measured overcured void depth is:
 
 ```text
-z_overcure = solid_void_depth_um
+z_overcure = overcure_void_depth_um
 ```
 
 ## Notes
