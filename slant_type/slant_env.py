@@ -9,6 +9,7 @@ from simulator import (
     OMEGA_G_DEFAULT,
 )
 
+
 G_MIN = 150
 G_MAX = 255
 N_G = G_MAX - G_MIN + 1
@@ -60,7 +61,7 @@ class SlantEnv(gym.Env):
     @staticmethod
     def _objective_depth(col):
         z_gel = float(col.gel_void_depth_um)
-        z_overcure = float(col.solid_void_depth_um)
+        z_overcure = float(col.overcure_void_depth_um)
         return z_gel + z_overcure
 
     def _obs(self):
@@ -141,10 +142,10 @@ class SlantEnv(gym.Env):
 
             per_overhang_z_gel = [float(c.gel_void_depth_um) for c in self.finished_columns]
             per_overhang_z_overcure = [
-                float(c.solid_void_depth_um) for c in self.finished_columns
+                float(c.overcure_void_depth_um) for c in self.finished_columns
             ]
             per_overhang_z_gel_only = [
-                float(c.gel_only_void_depth_um) for c in self.finished_columns
+                float(c.gel_only_band_depth_um) for c in self.finished_columns
             ]
             per_overhang_objective = [
                 z_gel + z_overcure
@@ -158,7 +159,7 @@ class SlantEnv(gym.Env):
                 {
                     "per_overhang_z_gel_um": per_overhang_z_gel,
                     "per_overhang_z_overcure_um": per_overhang_z_overcure,
-                    "per_overhang_z_gel_only_um": per_overhang_z_gel_only,
+                    "per_overhang_z_gel_only_band_um": per_overhang_z_gel_only,
                     "per_overhang_objective_um": per_overhang_objective,
                     "total_z_gel_um": float(sum(per_overhang_z_gel)),
                     "total_z_overcure_um": float(sum(per_overhang_z_overcure)),
