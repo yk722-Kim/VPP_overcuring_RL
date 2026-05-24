@@ -87,25 +87,34 @@ g in {150, 151, ..., 255}
 The reward follows the manuscript objective:
 
 ```text
+
 R = -(z_gel + z_overcure) - beta * sum(t_j)
+
 ```
 
 where:
 
 - `z_gel` is the gel-memory void depth beyond the nominal build boundary.
+
 - `z_overcure` is the fully solidified overcure depth beyond the nominal build boundary.
+
 - `t_j` is the exposure time for layer `j`.
+
 - `beta` is the exposure-time penalty coefficient.
 
 Code-variable correspondence:
 
 ```text
-gel_void_depth_um       -> z_gel
-solid_void_depth_um     -> z_overcure
-gel_only_void_depth_um  -> z_gel - z_overcure
+
+gel_void_depth_um           -> z_gel
+
+overcure_void_depth_um      -> z_overcure
+
+gel_only_band_depth_um      -> z_gel - z_overcure
+
 ```
 
-`gel_only_void_depth_um` is reported for diagnostics, but it is not used directly in the reward.
+`gel_only_band_depth_um` is reported for diagnostics, but it is not used directly in the reward.
 
 ## Geometry-Specific Environments
 
